@@ -10,7 +10,6 @@ const useUserStore = defineStore('UserStore', {
 
             if (response.ok) {
                 const data = await response.json();
-                console.log(data);
                 const users = data.safeUsers;
 
                 for (let i = 0; i < users.length; i++) {
