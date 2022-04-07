@@ -28,6 +28,29 @@ const validateSignup = [
     handleValidationErrors,
 ];
 
+// returns list of users
+router.get(
+    '/',
+    asyncHandler(async (req, res) => {
+        const users = await User.findAll();
+        const safeUsers = [];
+        users.forEach(user => {
+            safeUsers.push(user.toSafeObject())
+        })
+        return res.json({ safeUsers });
+    }),
+);
+
+router.get(
+    '/:id',
+    asyncHandler( async(req, res) => {
+        const { id } = req.params;
+        const user = await User.findByPk(id);
+        return res.json({
+            user: user.toSafeObject()
+        });
+    })
+)
 
 // Sign up
 router.post(
