@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "heroku-postbuild": "npm install -g @vue/cli && npm run build --prefix vue-app",
+    "heroku-postbuild": "npm install -g @vue/cli && && npm install -g @vue/cli-service npm run build --prefix vue-app",
     "install": "npm --prefix backend install backend && npm --prefix vue-app install vue-app",
     "dev:backend": "npm install --prefix backend start",
     "dev:frontend": "npm install --prefix vue-app start",
