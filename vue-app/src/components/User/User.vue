@@ -30,6 +30,9 @@ onMounted(() => {
             <li>
                 <strong>Username</strong> {{userList[userId].username}}
             </li>
+            <li>
+                <strong>Email</strong> {{userList[userId].email}}
+            </li>
         </div>
     </ul>
 </template>

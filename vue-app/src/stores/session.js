@@ -1,5 +1,4 @@
 import { defineStore } from 'pinia'
-import { csrfFetch } from './csrf';
 
 const useSessionStore = defineStore('sessionStore', {
     // setting of initial state
@@ -8,7 +7,11 @@ const useSessionStore = defineStore('sessionStore', {
     }),
     actions: {
         async authenticate() {
-            const response = await csrfFetch('/api/session/');
+            const response = await fetch('/api/auth/', {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
             if (response.ok) {
                 const data = await response.json();
                 if (data.errors) {
@@ -18,12 +21,13 @@ const useSessionStore = defineStore('sessionStore', {
             }
         },
         async login(email, password) {
-            console.log(email);
-            console.log(password);
-            const response = await csrfFetch('/api/session', {
+            const response = await fetch('/api/auth/login', {
                 method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
                 body: JSON.stringify({
-                    credential: email,
+                    email,
                     password
                 })
             });
@@ -42,8 +46,10 @@ const useSessionStore = defineStore('sessionStore', {
             }
         },
         async logout() {
-            const response = await csrfFetch('/api/session', {
-                method: 'DELETE'
+            const response = await fetch('/api/auth/logout', {
+                headers: {
+                    'Content-Type': 'application/json',
+                }
             });
 
             if (response.ok) {
@@ -52,8 +58,11 @@ const useSessionStore = defineStore('sessionStore', {
             }
         },
         async signUp(username, email, password) {
-            const response = await csrfFetch('/api/users', {
+            const response = await fetch('/api/auth/signup', {
                 method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
                 body: JSON.stringify({
                     username,
                     email,
