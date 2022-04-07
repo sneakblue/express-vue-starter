@@ -9,6 +9,7 @@
   },
   "proxy": "http://localhost:5000",
   "dependencies": {
+    "@vue/cli": "^5.0.4",
     "core-js": "^3.8.3",
     "pinia": "^2.0.13",
     "vue": "^3.2.13",
