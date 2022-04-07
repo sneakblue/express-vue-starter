@@ -10,7 +10,8 @@ const useUserStore = defineStore('UserStore', {
 
             if (response.ok) {
                 const data = await response.json();
-                const users = data.users;
+                console.log(data);
+                const users = data.safeUsers;
 
                 for (let i = 0; i < users.length; i++) {
                     this.userList[users[i].id] = users[i]
