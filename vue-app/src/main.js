@@ -3,6 +3,14 @@ import App from './App.vue'
 import { createPinia } from 'pinia'
 import { registerStore } from './stores/index.js'
 import { router } from './router'
+import { restoreCSRF, csrfFetch } from './stores/'
+
+
+if (process.env.NODE_ENV !== "production") {
+    restoreCSRF();
+
+    window.csrfFetch = csrfFetch;
+}
 
 // creation of the app
 const app = createApp(App);
@@ -16,4 +24,3 @@ registerStore();
 app.use(router);
 
 app.mount('#app');
-

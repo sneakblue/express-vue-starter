@@ -1,4 +1,5 @@
-import { defineStore } from 'pinia'
+import { defineStore } from 'pinia';
+import { csrfFetch } from './csrf';
 
 const useUserStore = defineStore('UserStore', {
     state: () => ({
@@ -6,7 +7,7 @@ const useUserStore = defineStore('UserStore', {
     }),
     actions: {
         async fetchUsers() {
-            const response = await fetch('/api/users/');
+            const response = await csrfFetch('/api/users/');
 
             if (response.ok) {
                 const data = await response.json();
@@ -18,7 +19,7 @@ const useUserStore = defineStore('UserStore', {
             }
         },
         async fetchUser(userId) {
-            const response = await fetch(`/api/users/${userId}`);
+            const response = await csrfFetch(`/api/users/${userId}`);
 
             if (response.ok) {
                 const loadedUser = await response.json();

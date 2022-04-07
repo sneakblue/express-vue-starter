@@ -1,4 +1,5 @@
 import { defineStore } from 'pinia'
+import { csrfFetch } from './csrf';
 
 const useSessionStore = defineStore('sessionStore', {
     // setting of initial state
@@ -7,11 +8,7 @@ const useSessionStore = defineStore('sessionStore', {
     }),
     actions: {
         async authenticate() {
-            const response = await fetch('/api/auth/', {
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            });
+            const response = await csrfFetch('/api/session/');
             if (response.ok) {
                 const data = await response.json();
                 if (data.errors) {
@@ -21,13 +18,10 @@ const useSessionStore = defineStore('sessionStore', {
             }
         },
         async login(email, password) {
-            const response = await fetch('/api/auth/login', {
+            const response = await csrfFetch('/api/session', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
                 body: JSON.stringify({
-                    email,
+                    credential: email,
                     password
                 })
             });
@@ -46,10 +40,8 @@ const useSessionStore = defineStore('sessionStore', {
             }
         },
         async logout() {
-            const response = await fetch('/api/auth/logout', {
-                headers: {
-                    'Content-Type': 'application/json',
-                }
+            const response = await csrfFetch('/api/session', {
+                method: 'DELETE'
             });
 
             if (response.ok) {
@@ -58,11 +50,8 @@ const useSessionStore = defineStore('sessionStore', {
             }
         },
         async signUp(username, email, password) {
-            const response = await fetch('/api/auth/signup', {
+            const response = await csrfFetch('/api/users', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
                 body: JSON.stringify({
                     username,
                     email,
