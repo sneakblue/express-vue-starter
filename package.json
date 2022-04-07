@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/sneakblue/express-vue-starter#readme",
   "dependencies": {
+    "vue": "^3.2.13",
     "@vue/cli": "^5.0.4",
     "@babel/core": "^7.12.16",
     "@vue/cli-service": "~5.0.0",
