@@ -10,7 +10,6 @@
   "proxy": "http://localhost:5000",
   "dependencies": {
     "core-js": "^3.8.3",
-    "js-cookie": "^3.0.1",
     "pinia": "^2.0.13",
     "vue": "^3.2.13",
     "vue-router": "^4.0.14"

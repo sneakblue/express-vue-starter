@@ -1,7 +1,7 @@
 const express = require('express');
 const asyncHandler = require('express-async-handler');
-const { check } = require('express-validator');
 
+const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 const { setTokenCookie, requireAuth } = require('../../utils/auth');
 const { User } = require('../../db/models');
@@ -28,29 +28,6 @@ const validateSignup = [
     handleValidationErrors,
 ];
 
-// returns list of users
-router.get(
-    '/',
-    asyncHandler(async (req, res) => {
-        const users = await User.findAll();
-        const safeUsers = [];
-        users.forEach(user => {
-            safeUsers.push(user.toSafeObject())
-        })
-        return res.json({ safeUsers });
-    }),
-);
-
-router.get(
-    '/:id',
-    asyncHandler( async(req, res) => {
-        const { id } = req.params;
-        const user = User.findByPk(id);
-        return res.json({
-            user: user.toSafeObject()
-        });
-    })
-)
 
 // Sign up
 router.post(
