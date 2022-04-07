@@ -21,5 +21,8 @@
   "bugs": {
     "url": "https://github.com/sneakblue/express-vue-starter/issues"
   },
-  "homepage": "https://github.com/sneakblue/express-vue-starter#readme"
+  "homepage": "https://github.com/sneakblue/express-vue-starter#readme",
+  "dependencies": {
+    "@vue/cli": "^5.0.4"
+  }
 }
