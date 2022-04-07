@@ -45,7 +45,7 @@ router.get(
     '/:id',
     asyncHandler( async(req, res) => {
         const { id } = req.params;
-        const user = User.findByPk(id);
+        const user = await User.findByPk(id);
         return res.json({
             user: user.toSafeObject()
         });
