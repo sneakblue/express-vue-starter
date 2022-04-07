@@ -3,7 +3,7 @@ import App from './App.vue'
 import { createPinia } from 'pinia'
 import { registerStore } from './stores/index.js'
 import { router } from './router'
-import { restoreCSRF, csrfFetch } from './stores/'
+import { restoreCSRF, csrfFetch } from './stores/csrf.js'
 
 
 if (process.env.NODE_ENV !== "production") {
