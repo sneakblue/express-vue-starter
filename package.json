@@ -1,0 +1,25 @@
+{
+  "name": "vueexpressapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "heroku-postbuild": "npm run build --prefix vue-app",
+    "install": "npm --prefix backend install backend && npm --prefix vue-app install vue-app",
+    "dev:backend": "npm install --prefix backend start",
+    "dev:frontend": "npm install --prefix vue-app start",
+    "sequelize": "npm run --prefix backend sequelize",
+    "sequelize-cli": "npm run --prefix backend sequelize-cli",
+    "start": "npm start --prefix backend"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sneakblue/express-vue-starter.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sneakblue/express-vue-starter/issues"
+  },
+  "homepage": "https://github.com/sneakblue/express-vue-starter#readme"
+}
